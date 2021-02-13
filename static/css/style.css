@@ -9,18 +9,13 @@ body {
         background-color: honeydew;
     }
 }
-#bubble_map{
 
+.navbar-brand{
+    color:black;
 }
-
-#map2_map{
-
+.navbar-nav{
+    background-color: azure;
 }
-
-#map3_map{
-
-}
-
-.dropdown-menu{
-
+.nav-link-active{
+    color:black;
 }
