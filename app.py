@@ -1,10 +1,16 @@
 from flask import Flask, render_template, redirect, jsonify, request
 from flask_pymongo import PyMongo
+import pymongo
 import sys
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/movies_db"
-mongo = PyMongo(app)
+# setup mongo connection
+conn = "mongodb://localhost:27017"
+client = pymongo.MongoClient(conn)
+
+# connect to mongo db and collection
+db = client.movies_db
+movies = db.movie_table
 
 # Base route on bring up
 @app.route("/")
@@ -29,6 +35,15 @@ def wordcloud():
     if request.method == "POST":
         genre = request.form['selGenre']
         print("--------------------> Selected: " + genre)
+        query = {
+                "genres":
+                    {
+                        "$regex": f'.*{genre}.*',
+                        "$options": "i" # case-insensitive
+                    }
+                }
+        genre_match = movies.find(query)
+        print("---------------------> Count Match: " + str(genre_match.count(True)))
     return render_template("cloud.html", text_string = text_string)
 
 if __name__ == "__main__":
