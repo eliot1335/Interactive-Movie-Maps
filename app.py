@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 from flask_pymongo import PyMongo
 import sys
 
@@ -13,8 +13,12 @@ def index():
     return render_template("home.html")
 
 # Base route on bring up
-@app.route("/wordcloud")
+@app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
+    genre = "Action"
+    if request.method == "POST":
+        genre = request.form['selGenre']
+        print("--------------------> Selected: " + genre)
     # print(mars_data)
     return render_template("cloud.html")
 

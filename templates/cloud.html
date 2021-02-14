@@ -7,10 +7,10 @@
 {% block content %}
 <div class ="row">
     <div class="col-md-12 jumbotron text-center">
-        <form name="genreSelect" action="cloud.html" method="POST">
+        <form name="genreSelect" action="/wordcloud" method="POST">
             <h2>A Movie Genre Based Word Cloud</h2>
             <h4>Choose a genre:</h4>
-            <select id="selGenre">
+            <select name="selGenre">
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Animation">Animation</option>
