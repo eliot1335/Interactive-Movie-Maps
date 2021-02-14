@@ -9,18 +9,27 @@ mongo = PyMongo(app)
 # Base route on bring up
 @app.route("/")
 def index():
-    # print(mars_data)
     return render_template("home.html")
 
-# Base route on bring up
+# maps route
+@app.route("/maps")
+def index():
+    return render_template("maps.html")
+
+# scatter route
+@app.route("/scatter")
+def index():
+    return render_template("scatter.html")
+
+# word cloud route
 @app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
     genre = "Action"
+    text_string = "All work and no play makes jack a dull boy."
     if request.method == "POST":
         genre = request.form['selGenre']
         print("--------------------> Selected: " + genre)
-    # print(mars_data)
-    return render_template("cloud.html")
+    return render_template("cloud.html", text_string = text_string)
 
 if __name__ == "__main__":
     app.run(debug=True)
