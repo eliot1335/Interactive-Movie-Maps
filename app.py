@@ -13,12 +13,12 @@ def index():
 
 # maps route
 @app.route("/maps")
-def index():
+def maps():
     return render_template("maps.html")
 
 # scatter route
 @app.route("/scatter")
-def index():
+def scatter():
     return render_template("scatter.html")
 
 # word cloud route
