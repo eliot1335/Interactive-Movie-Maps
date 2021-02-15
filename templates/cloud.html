@@ -52,14 +52,14 @@
             word_count[words[0]] = 1;
         } else {
             words.forEach(function(word){
-            var word = word.toLowerCase();
-            if (word != "" && common.indexOf(word)==-1 && word.length>1){
-                if (word_count[word]){
-                word_count[word]++;
-                } else {
-                word_count[word] = 1;
+                var word = word.toLowerCase();
+                if (word != "" && common.indexOf(word)==-1 && word.length>1){
+                    if (word_count[word]){
+                        word_count[word]++;
+                    } else {
+                        word_count[word] = 1;
+                    }
                 }
-            }
             })
         }
 

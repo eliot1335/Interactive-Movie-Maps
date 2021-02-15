@@ -50,7 +50,7 @@ def wordcloud():
         print("---------------------> Count Match: " + str(genre_match.count(True)))
         text_string = ""
         for cursor in genre_match:
-            text_string += cursor.get("keywords")
+            text_string += cursor.get("keywords") + ":"
 
     return render_template("cloud.html", text_string = text_string)
 
