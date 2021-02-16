@@ -47,7 +47,7 @@ def wordcloud():
                 }
             }
     genre_match = movies.find(query)
-    print("---------------------> Count Match: " + str(genre_match.count(True)))
+    print("--------------------> Count Match: " + str(genre_match.count(True)))
     text_string = ""
     for cursor in genre_match:
         text_string += cursor.get("keywords") + ":"
