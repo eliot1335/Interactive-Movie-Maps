@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Movie Maps{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/world.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class ="row">
+        <div class="col-md-12 jumbotron text-center">
+            <h1>Movie Maps</h1>
+        </div>
+    </div>
+    <div class="container" id="maps">
+    </div>
+{% endblock %}
