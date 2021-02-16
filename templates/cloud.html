@@ -2,6 +2,8 @@
 {% block title %}Word Cloud{% endblock %}
 {% block head %}
     {{ super() }}
+    <!---D3 Link -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
     <script src="{{ url_for('static', filename='js/cloud.js') }}"></script>
 {% endblock %}
 {% block content %}
@@ -11,26 +13,26 @@
             <h2>A Movie Genre Based Word Cloud</h2>
             <h4>Choose a genre:</h4>
             <select name="selGenre">
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Animation">Animation</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Crime">Crime</option>
-                <option value="Documentary">Documentary</option>
-                <option value="Drama">Drama</option>
-                <option value="Family">Family</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Foreign">Foreign</option>
-                <option value="History">History</option>
-                <option value="Horror">Horror</option>
-                <option value="Music">Music</option>
-                <option value="Mystery">Mystery</option>
-                <option value="Romance">Romance</option>
-                <option value="Science Fiction">Science Fiction</option>
-                <option value="TV Movie">TV Movie</option>
-                <option value="Thriller">Thriller</option>
-                <option value="War">War</option>
-                <option value="Western">Western</option>
+                <option value="Action"{% if rec.selGenre=="Action" %} selected="selected"{% endif %}>Action</option>
+                <option value="Adventure"{% if rec.selGenre=="Adventure" %} selected="selected"{% endif %}>Adventure</option>
+                <option value="Animation"{% if rec.selGenre=="Animation" %} selected="selected"{% endif %}>Animation</option>
+                <option value="Comedy"{% if rec.selGenre=="Comedy" %} selected="selected"{% endif %}>Comedy</option>
+                <option value="Crime"{% if rec.selGenre=="Crime" %} selected="selected"{% endif %}>Crime</option>
+                <option value="Documentary"{% if rec.selGenre=="Documentary" %} selected="selected"{% endif %}>Documentary</option>
+                <option value="Drama"{% if rec.selGenre=="Drama" %} selected="selected"{% endif %}>Drama</option>
+                <option value="Family"{% if rec.selGenre=="Family" %} selected="selected"{% endif %}>Family</option>
+                <option value="Fantasy"{% if rec.selGenre=="Fantasy" %} selected="selected"{% endif %}>Fantasy</option>
+                <option value="Foreign"{% if rec.selGenre=="Foreign" %} selected="selected"{% endif %}>Foreign</option>
+                <option value="History"{% if rec.selGenre=="History" %} selected="selected"{% endif %}>History</option>
+                <option value="Horror"{% if rec.selGenre=="Horror" %} selected="selected"{% endif %}>Horror</option>
+                <option value="Music"{% if rec.selGenre=="Music" %} selected="selected"{% endif %}>Music</option>
+                <option value="Mystery"{% if rec.selGenre=="Mystery" %} selected="selected"{% endif %}>Mystery</option>
+                <option value="Romance"{% if rec.selGenre=="Romance" %} selected="selected"{% endif %}>Romance</option>
+                <option value="Science Fiction"{% if rec.selGenre=="Science Fiction" %} selected="selected"{% endif %}>Science Fiction</option>
+                <option value="TV Movie"{% if rec.selGenre=="TV Movie" %} selected="selected"{% endif %}>TV Movie</option>
+                <option value="Thriller"{% if rec.selGenre=="Thriller" %} selected="selected"{% endif %}>Thriller</option>
+                <option value="War"{% if rec.selGenre=="War" %} selected="selected"{% endif %}>War</option>
+                <option value="Western"{% if rec.selGenre=="Western" %} selected="selected"{% endif %}>Western</option>
             </select>
             <button type="submit">Generate!</button>
         </form>
@@ -38,7 +40,7 @@
 </div>
 <div id="chart"></div>
 <script>
-    var text_string = "{{ text_string }}";
+    var text_string = "{{ rec.text_string }}";
 
     drawWordCloud(text_string);
 

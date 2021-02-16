@@ -39,20 +39,22 @@ def wordcloud():
     if request.method == "POST":
         genre = request.form['selGenre']
         print("--------------------> Selected: " + genre)
-        query = {
-                "genres":
-                    {
-                        "$regex": f'.*{genre}.*',
-                        "$options": "i" # case-insensitive
-                    }
+    query = {
+            "genres":
+                {
+                    "$regex": f'.*{genre}.*',
+                    "$options": "i" # case-insensitive
                 }
-        genre_match = movies.find(query)
-        print("---------------------> Count Match: " + str(genre_match.count(True)))
-        text_string = ""
-        for cursor in genre_match:
-            text_string += cursor.get("keywords") + ":"
+            }
+    genre_match = movies.find(query)
+    print("---------------------> Count Match: " + str(genre_match.count(True)))
+    text_string = ""
+    for cursor in genre_match:
+        text_string += cursor.get("keywords") + ":"
 
-    return render_template("cloud.html", text_string = text_string)
+    rec = { "selGenre": genre, "text_string": text_string}
+
+    return render_template("cloud.html", rec=rec)
 
 if __name__ == "__main__":
     app.run(debug=True)
