@@ -57,7 +57,7 @@ def scatter_plot():
 # word cloud route
 @app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
-    genre = "Action"
+    genre = "Music"
     text_string = "All work and no play makes jack a dull boy."
     if request.method == "POST":
         genre = request.form['selGenre']

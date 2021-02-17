@@ -1,3 +1,8 @@
+async function buildMetadata(sample) {
+  const url = "/metadata/" + sample;
+  let data = await d3.json(url)
+};
+
 var myMap = L.map("map",{
     center:[15.5994, -28.6731],
     zoom:2
@@ -8,6 +13,4 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
   maxZoom: 18,
   id: "light-v10",
   accessToken: API_KEY
-});
-
-var production_countries =[];
+}.addTo(myMap));
