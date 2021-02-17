@@ -24,11 +24,13 @@ var chartGroup = svg
 // Import Data
 d3.json("/metadata/scatter_plot").then(function (movieData) {
 
+    console.log(movieData);
+
     // Parse the data/Cast as numbers
-    movieData.forEach(function (data) {
-        data.budget = +data.budget;
-        data.revenue = +data.revenue;
-    });
+    // movieData.forEach(function (data) {
+    //     data.budget = +data.budget;
+    //     data.revenue = +data.revenue;
+    // });
 
     var xLinearScale = d3.scaleLinear()
         .domain([d3.min(movieData, d => d.budget),

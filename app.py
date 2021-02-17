@@ -11,11 +11,11 @@ from bson.json_util import dumps
 app = Flask(__name__)
 # setup mongo connection
 conn = "mongodb://localhost:27017"
-client = pymongo.MongoClient(conn)
 
-# connect to mongo db and collection
-db = client.movies_db
-movies = db.movie_table
+# connect to mongo db and collection do it in the route function
+# client = pymongo.MongoClient(conn)
+# db = client.movies_db
+# movies = db.movie_table
 
 ###############################################################################################
 # Base route on bring up
@@ -43,24 +43,33 @@ def scatter():
 @app.route("/metadata/scatter_plot")
 def scatter_plot():
 
-    fields = {"title": True, "budget": True, "revenue": True, "genres": True}
+    client = pymongo.MongoClient(conn)
 
-    projects = movies.find(projection = fields)
+    # connect to mongo db and collection   
+    db = client.movies_db
+    movies = db.movie_table
 
-    json_projects = []
+    fields = {"title": True, "budget": True, "revenue": True, "genres": True, "_id": False}
 
-    for project in projects:
-        json_projects.append(project)
+    json_projects = movies.find({}, fields)
 
-    json_projects = json.dumps(json_projects, default=json_util.default)
     client.close()
-    
-    return json_projects
+
+    json_projects = [project for project in json_projects]
+
+    print(type(json_projects))
+
+    return jsonify(json_projects)
 
 ###############################################################################################
 # word cloud route
 @app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
+    ############
+    client = pymongo.MongoClient(conn)
+    db = client.movies_db
+    movies = db.movie_table
+    ############
     genre = "Music"
     text_string = "All work and no play makes jack a dull boy."
     if request.method == "POST":
@@ -81,6 +90,9 @@ def wordcloud():
 
     rec = { "selGenre": genre, "text_string": text_string}
 
+    ##################
+    client.close()
+    ##################
     return render_template("cloud.html", rec=rec)
 
 if __name__ == "__main__":
