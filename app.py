@@ -2,6 +2,11 @@ from flask import Flask, render_template, redirect, jsonify, request
 from flask_pymongo import PyMongo
 import pymongo
 import sys
+########## eliot added these 2/16/21 ##############
+import json
+from bson import json_util
+from bson.json_util import dumps
+########## eliot added these 2/16/21 ##############
 
 app = Flask(__name__)
 # setup mongo connection
@@ -29,6 +34,24 @@ def maps():
 @app.route("/scatter")
 def scatter():
     return render_template("scatter.html")
+
+# route for json object
+@app.route("/metadata/scatter_plot")
+def scatter_plot():
+
+    fields = {"title": True, "budget": True, "revenue": True, "genres": True}
+
+    projects = movies.find(projection = fields)
+
+    json_projects = []
+
+    for project in projects:
+        json_projects.append(project)
+
+    json_projects = json.dumps(json_projects, default=json_util.default)
+    client.close()
+    
+    return json_projects
 
 ###############################################################################################
 # word cloud route

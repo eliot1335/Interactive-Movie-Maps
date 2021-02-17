@@ -1,3 +1,17 @@
+async function buildMetadata(sample) {
+    // Use `d3.json` to fetch the metadata for a sample
+    const url = "/metadata/" + sample;
+    let data = await d3.json(url);
+
+};
+
+buildMetadata();
+
+console.log(data);
+
+
+
+
 // Setup the parameters
 var svgWidth = 800;
 var svgHeight = 600;
