@@ -29,6 +29,10 @@ def index():
 def maps():
     return render_template("maps.html")
 
+# route for JSON object
+def map_plot():
+    fields = {"title": True, "productionCountries": True, "revenue": True}
+
 ###############################################################################################
 # scatter route
 @app.route("/scatter")
