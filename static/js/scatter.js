@@ -1,17 +1,3 @@
-async function buildMetadata(sample) {
-    // Use `d3.json` to fetch the metadata for a sample
-    const url = "/metadata/" + sample;
-    let data = await d3.json(url);
-
-};
-
-buildMetadata();
-
-console.log(data);
-
-
-
-
 // Setup the parameters
 var svgWidth = 800;
 var svgHeight = 600;
@@ -36,7 +22,7 @@ var chartGroup = svg
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import Data
-d3.csv("url_for('Resources', filename='movies_metadata.csv')").then(function (movieData) {
+d3.json("/metadata/scatter_plot").then(function (movieData) {
 
     // Parse the data/Cast as numbers
     movieData.forEach(function (data) {
