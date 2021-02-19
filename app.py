@@ -12,11 +12,6 @@ app = Flask(__name__)
 # setup mongo connection
 conn = "mongodb://localhost:27017"
 
-# connect to mongo db and collection do it in the route function
-# client = pymongo.MongoClient(conn)
-# db = client.movies_db
-# movies = db.movie_table
-
 ###############################################################################################
 # Base route on bring up
 @app.route("/")
@@ -65,11 +60,11 @@ def scatter_plot():
 # word cloud route
 @app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
-    ############
+    # Connect to the MongoDB
     client = pymongo.MongoClient(conn)
     db = client.movies_db
     movies = db.movie_table
-    ############
+
     genre = "Music"
     text_string = "All work and no play makes jack a dull boy."
     if request.method == "POST":
@@ -91,9 +86,8 @@ def wordcloud():
 
     rec = { "selGenre": genre, "text_string": text_string}
 
-    ##################
     client.close()
-    ##################
+
     return render_template("cloud.html", rec=rec)
 
 if __name__ == "__main__":
