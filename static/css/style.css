@@ -37,3 +37,31 @@ img {
     background-color: darkgray;
     color: whitesmoke;
 }
+
+progress {
+    width: 200px;
+    border: 0; /* for IE */
+    height: 20px;
+    background-color: white;
+    border: 1px solid slategray;
+    overflow: hidden;
+}
+
+/* necessary to style the progress bar background */
+::-webkit-progress-bar {
+    background-color: white;
+}
+
+/** ---------
+    NOT animated
+*/
+.animated-not::-webkit-progress-value {
+    background-color: slategray;
+}
+.animated-not::-moz-progress-bar {
+    background-color: slategray;
+}
+.animated-not::-ms-fill {
+    background-color: slategray;
+    border:0;
+}
