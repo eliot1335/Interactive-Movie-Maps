@@ -1,12 +1,12 @@
 // Setup the parameters
-var svgWidth = 800;
+var svgWidth = 1000;
 var svgHeight = 500;
 
 var margin = {
     top: 40,
     right: 40,
     bottom: 80,
-    left: 250
+    left: 200
 };
 
 var width = svgWidth - margin.left - margin.right;
@@ -61,18 +61,18 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     // Create axes labels
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 -margin.left + 150)
+        .attr("y", 0 -margin.left + 100)
         .attr("x", 0 - (height / 2) -60)
         .attr("class", "axisText")
-        .text("Revenue");
+        .text("Revenue (USD)");
 
     chartGroup.append("text")
         .attr("transform", `translate(${width / 2}, ${height + margin.top + 10})`)
         .attr("class", "axisText")
-        .text("Budget");
+        .text("Budget (USD)");
 
     // Create circles
-    chartGroup.selectAll("circle")
+    var circlesGroup = chartGroup.selectAll("circle")
         .data(movieData)
         .enter()
         .append("circle")
@@ -85,33 +85,37 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         // .attr('fill',function (d,i) { return colorScale(i) })
         .attr("opacity", "0.6")
 
+    circlesGroup.on("mouseover", function (d) {
+            d3.select(this)
+                .transition()
+                // .duration(500)
+                .attr("r", 20)
+                .attr("stroke-width", 3)
+        })
+            .on("mouseout", function () {
+                d3.select(this)
+                .transition()
+                // .duration(500)
+                .attr("r", 10)
+                .attr("stroke-width", 1)
+        })
 
-        .on("mouseover", function () {
-            d3.select(this)
-            .transition()
-            // .duration(500)
-            .attr("r", 20)
-            .attr("stroke-width", 3)
-        })
-        .on("mouseout", function () {
-            d3.select(this)
-            .transition()
-            // .duration(500)
-            .attr("r", 10)
-            .attr("stroke-width", 1)
-        })
         .append("title") // Tooltip
-            .text(function (d) { return d.title });
+            .text(d => d.title);
 
-
-    // Create circle labels
-    // chartGroup.selectAll()
-    //     .data(movieData)
-    //     .enter()
-    //     .append("text")
-    //     .attr("x", d => xLinearScale(d.budget) -6.5)
-    //     .attr("y", d => yLinearScale(d.revenue) + 3)
-    //     .style("fill", "white")
-    //     .style("font-size", "8.5")
-    //     .text(d => d.title);
+        // .append("div")
+        // .classed("tooltip", true)
+        // .style("display", "block")
+        // .html(`<strong>${d => d.title}<strong><hr>${d => d.budget}`);
 });
+
+
+
+
+/* features to work on
+
+1. Genre filter
+    - Drop down
+2. Tooltip improvement
+3. Color scale circles
+                        */
