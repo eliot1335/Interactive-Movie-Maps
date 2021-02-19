@@ -82,7 +82,8 @@ def wordcloud():
                     "$options": "i" # case-insensitive
                 }
             }
-    genre_match = movies.find(query)
+    fields = {"keywords": True, "_id": False}
+    genre_match = movies.find(query, fields)
     print("--------------------> Count Match: " + str(genre_match.count(True)))
     text_string = ""
     for cursor in genre_match:
