@@ -30,7 +30,7 @@ def maps():
     return render_template("maps.html")
 
 # route for JSON object
-@app.route("/metadate/world_map")
+@app.route("/metadata/world_map")
 def mapping():
 
     client = pymongo.MongoClient(conn)
