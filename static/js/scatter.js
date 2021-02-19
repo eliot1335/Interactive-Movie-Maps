@@ -11,15 +11,16 @@ var margin = {
 
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
-
+console.log("this is line 14");
 var svg = d3.select("#scatter")
             .append("svg")
             .attr("width", svgWidth)
             .attr("height", svgHeight);
-
+            console.log("this is line 19");
 var chartGroup = svg
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
+            // .attr("pointer-events", "stroke")
 
 // Import Data
 d3.json("/metadata/scatter_plot").then(function (movieData) {
@@ -27,19 +28,21 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     console.log(movieData);
 
     // Parse the data/Cast as numbers
-    // movieData.forEach(function (data) {
-    //     data.budget = +data.budget;
-    //     data.revenue = +data.revenue;
-    // });
+    movieData.forEach(function (data) {
+        data.budget = +data.budget;
+        data.revenue = +data.revenue;
+    });
 
     var xLinearScale = d3.scaleLinear()
         .domain([d3.min(movieData, d => d.budget),
                  d3.max(movieData, d => d.budget)])
+        // .domain([0, 500000000])
         .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
         .domain([d3.min(movieData, d => d.revenue),
                  d3.max(movieData, d => d.revenue)])
+        // .domain([0, 500000000])
         .range([height, 0]);
 
     // Create axis functions
