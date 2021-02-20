@@ -147,7 +147,8 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
 
 1. Genre filter
     - Drop down
-2. Tooltip improvement
+2. Tooltip improvement (done)
 3. Color scale circles (done)
 4. Axes labeling (done)
+5. Create a legend for the color scale
                         */
