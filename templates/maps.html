@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
-{% block title %}Movie Maps{% endblock %}
+{% block title %}Scatter Plot{% endblock %}
 {% block head %}
     {{ super() }}
     <!---D3 Link -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/world.js') }}"></script>
+    <!-- script file -->
 {% endblock %}
 {% block content %}
     <div class ="row">
@@ -15,4 +14,5 @@
     </div>
     <div class="container" id="map">
     </div>
+    <script src="{{ url_for('static', filename='js/scatter.js') }}"></script>
 {% endblock %}
