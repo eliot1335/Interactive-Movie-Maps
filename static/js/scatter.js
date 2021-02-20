@@ -113,7 +113,7 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .attr("class", "tooltip")
         .offset([80, -100])
         .html(function(d) {
-        return (`<strong>${d.title}</strong><br>Genre: ${d.genres}
+        return (`<strong>${d.title}</strong><br><br>Genre: ${d.genres}
                 <br>Budget: ${formatter.format(d.budget)}
                 <br>Revenue: ${formatter.format(d.budget)}`);
         });
