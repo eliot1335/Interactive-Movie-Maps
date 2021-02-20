@@ -1,12 +1,12 @@
 // Setup the parameters
 var svgWidth = 1000;
-var svgHeight = 500;
+var svgHeight = 800;
 
 var margin = {
     top: 40,
     right: 40,
     bottom: 80,
-    left: 200
+    left: 100
 };
 
 var width = svgWidth - margin.left - margin.right;
@@ -63,7 +63,7 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     // Create axes labels
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 -margin.left + 100)
+        .attr("y", 0 -margin.left + 50)
         .attr("x", 0 - (height / 2) -60)
         .attr("class", "axisText")
         .text("Revenue (USD)");
