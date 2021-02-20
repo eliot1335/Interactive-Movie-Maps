@@ -31,10 +31,11 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     console.log(movieData);
 
     // Parse the data/Cast as numbers
-    movieData.forEach(function (data) {
-        data.budget = +data.budget;
-        data.revenue = +data.revenue;
-    });
+    // movieData.forEach(function (data) {
+    //     data.budget = +data.budget;
+    //     data.revenue = +data.revenue;
+    // });
+    var formatValue = d3.format(".2s");
 
     var xLinearScale = d3.scaleLinear()
         .domain([d3.min(movieData, d => d.budget),
@@ -45,10 +46,11 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .domain([d3.min(movieData, d => d.revenue),
                  d3.max(movieData, d => d.revenue)])
         .range([height, 0]);
+        
 
     // Create axis functions
-    var bottomAxis = d3.axisBottom(xLinearScale);
-    var leftAxis = d3.axisLeft(yLinearScale);
+    var bottomAxis = d3.axisBottom(xLinearScale).tickFormat(d => formatValue(d).replace("M", "M"));
+    var leftAxis = d3.axisLeft(yLinearScale).tickFormat(d => formatValue(d).replace("M", "M").replace("G", "B"));
 
     // Append Axes to the chart
     chartGroup.append("g")
@@ -118,4 +120,5 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     - Drop down
 2. Tooltip improvement
 3. Color scale circles
+4. Axes labeling (done)
                         */
