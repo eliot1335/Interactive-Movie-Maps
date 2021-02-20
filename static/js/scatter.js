@@ -91,15 +91,12 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .data(movieData)
         .enter()
         .append("circle")
-        // class
-        // .attr("class", "movieCircles")
         .attr("cx", d => xLinearScale(d.budget))
         .attr("cy", d => yLinearScale(d.revenue))
         .attr("r", 10)
         .attr("stroke", "black")
         .attr("stroke-width", 1)
         .attr("fill", "teal")
-        // .attr("fill", c10)
         .attr('fill',function (d,i) { return c10(d.genres) })
         // .attr('fill',function (d,i) { return c20(d.genres) })
         .attr("opacity", "0.6")
@@ -131,11 +128,6 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
                 .attr("stroke-width", 3);
             
             toolTip.show(d, this);
-
-            // toolTip.transition()
-            //     .style("opacity", .9)
-            //     .style("left", d3.event.pageX + "px")
-            //     .style("top", d3.event.pageY + "px");
         })
             .on("mouseout", function (d) {
                 d3.select(this)
@@ -145,13 +137,7 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
                     .attr("stroke-width", 1);
                 
                 toolTip.hide(d);
-
-                // toolTip.transition()
-                //     .duration(500)
-                //     .style("opacity", 0);
         })
-        // .append("title") // Tooltip
-        //     .text(d => d.title);
 });
 
 
