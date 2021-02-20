@@ -58,7 +58,7 @@ progress {
     background-color: white;
 }
 
-/** ---------
+/* ---------
     NOT animated
 */
 .animated-not::-webkit-progress-value {
