@@ -1,6 +1,6 @@
 // Setup the parameters
 var svgWidth = 1000;
-var svgHeight = 550;
+var svgHeight = 700;
 
 var margin = {
     top: 40,
@@ -42,6 +42,23 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
     //     data.budget = +data.budget;
     //     data.revenue = +data.revenue;
     // });
+
+    
+    // var body = d3.select('body')
+    // // Select X-axis Variable
+    // var span = body.append('span')
+    //     .text('Select a genre: ')
+    // var genreInput = body.append('select')
+    //     .attr('id','genreSelect')
+    //     .on('change',xChange)
+    //     .selectAll('option')
+    //     .data(data.keys)
+    //     .enter()
+    //     .append('option')
+    //     .attr('value', function (d) { return d })
+    //     .text(function (d) { return d ;})
+    //     body.append('br')
+  
 
     var formatValue = d3.format(".2s");
 
@@ -138,6 +155,25 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
                 
                 toolTip.hide(d);
         })
+    
+    // function genreChange() {
+    //     var value = this.value // get the new y value
+    //     xLinearScale // change the yScale
+    //         .domain([
+    //         d3.min([0,d3.min(data.values,function (d) { return d[value] })]),
+    //         d3.max([0,d3.max(data.values,function (d) { return d[value] })])
+    //         ])
+    //     yAxis.scale(yScale) // change the yScale
+    //     d3.select('#yAxis') // redraw the yAxis
+    //         .transition().duration(1000)
+    //         .call(yAxis)
+    //     d3.select('#yAxisLabel') // change the yAxisLabel
+    //         .text(value)    
+    //     d3.selectAll('circle') // move the circles
+    //         .transition().duration(1000)
+    //         .delay(function (d,i) { return i*100})
+    //         .attr('cy',function (d) { return yScale(d[value]) })
+    //       }
 });
 
 
