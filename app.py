@@ -35,6 +35,10 @@ def mapping():
 
     fields = {"title": True, "revenue": True, "productionCountries": True, "_id": False}
 
+    json_projects = movies.find({}, fields)
+
+    client.close()
+
     json_projects = [project for project in json_projects]
 
     print(type(json_projects))
