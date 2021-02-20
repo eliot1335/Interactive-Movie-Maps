@@ -22,9 +22,6 @@ var chartGroup = svg
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
             // .attr("pointer-events", "stroke")
 
-
-// var colorScale = d3.scale.category20()
-
 // Import Data
 d3.json("/metadata/scatter_plot").then(function (movieData) {
 
@@ -73,6 +70,9 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .attr("class", "axisText")
         .text("Budget (USD)");
 
+
+    var c10 = d3.scaleOrdinal(d3.schemeCategory10);
+
     // Create circles
     var circlesGroup = chartGroup.selectAll("circle")
         .data(movieData)
@@ -84,7 +84,8 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .attr("stroke", "black")
         .attr("stroke-width", 1)
         .attr("fill", "teal")
-        // .attr('fill',function (d,i) { return colorScale(i) })
+        // .attr("fill", c10)
+        .attr('fill',function (d,i) { return c10(i) })
         .attr("opacity", "0.6")
 
     circlesGroup.on("mouseover", function (d) {
@@ -119,6 +120,6 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
 1. Genre filter
     - Drop down
 2. Tooltip improvement
-3. Color scale circles
+3. Color scale circles (done)
 4. Axes labeling (done)
                         */
