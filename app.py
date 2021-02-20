@@ -2,20 +2,15 @@ from flask import Flask, render_template, redirect, jsonify, request
 from flask_pymongo import PyMongo
 import pymongo
 import sys
-########## eliot added these 2/16/21 ##############
 import json
 from bson import json_util
 from bson.json_util import dumps
-########## eliot added these 2/16/21 ##############
+
 
 app = Flask(__name__)
 # setup mongo connection
 conn = "mongodb://localhost:27017"
 
-# connect to mongo db and collection do it in the route function
-# client = pymongo.MongoClient(conn)
-# db = client.movies_db
-# movies = db.movie_table
 
 ###############################################################################################
 # Base route on bring up
@@ -58,7 +53,7 @@ def scatter_plot():
 
     client = pymongo.MongoClient(conn)
 
-    # connect to mongo db and collection   
+    # connect to mongo db and collection
     db = client.movies_db
     movies = db.movie_table
 
@@ -78,11 +73,11 @@ def scatter_plot():
 # word cloud route
 @app.route("/wordcloud", methods=['POST', 'GET'])
 def wordcloud():
-    ############
+
     client = pymongo.MongoClient(conn)
     db = client.movies_db
     movies = db.movie_table
-    ############
+
     genre = "Music"
     text_string = "All work and no play makes jack a dull boy."
     if request.method == "POST":
@@ -95,17 +90,17 @@ def wordcloud():
                     "$options": "i" # case-insensitive
                 }
             }
-    genre_match = movies.find(query)
-    print("--------------------> Count Match: " + str(genre_match.count(True)))
+    fields = {"keywords": True, "_id": False}
+    genre_match_count = movies.count_documents(query)
+    genre_match = movies.find(query, fields)
+    client.close()
+    print("--------------------> Count Match: " + str(genre_match_count) )
     text_string = ""
     for cursor in genre_match:
         text_string += cursor.get("keywords") + ":"
 
     rec = { "selGenre": genre, "text_string": text_string}
 
-    ##################
-    client.close()
-    ##################
     return render_template("cloud.html", rec=rec)
 
 if __name__ == "__main__":

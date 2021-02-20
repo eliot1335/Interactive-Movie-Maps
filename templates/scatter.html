@@ -4,7 +4,6 @@
     {{ super() }}
     <!---D3 Link -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- script file -->
 {% endblock %}
 {% block content %}
     <div class ="row">
@@ -14,5 +13,6 @@
     </div>
     <div class="container" id="scatter">
     </div>
+    <!-- script file -->
     <script src="{{ url_for('static', filename='js/scatter.js') }}"></script>
 {% endblock %}
