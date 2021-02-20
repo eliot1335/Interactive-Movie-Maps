@@ -1,6 +1,6 @@
 // Setup the parameters
 var svgWidth = 1000;
-var svgHeight = 800;
+var svgHeight = 550;
 
 var margin = {
     top: 40,
@@ -27,11 +27,22 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
 
     console.log(movieData);
 
+    // Split genres
+    movieData.forEach(item => {
+        var genres = item.genres.split(":");
+        var genre = genres[0];
+        item.genres = genre;
+    })
+    
+    // **************
+    // console.log(d.genres);
+
     // Parse the data/Cast as numbers
     // movieData.forEach(function (data) {
     //     data.budget = +data.budget;
     //     data.revenue = +data.revenue;
     // });
+
     var formatValue = d3.format(".2s");
 
     var xLinearScale = d3.scaleLinear()
@@ -72,12 +83,16 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
 
 
     var c10 = d3.scaleOrdinal(d3.schemeCategory10);
+    // var c20 = d3.scaleOrdinal(d3.schemeCategory20c);
+
 
     // Create circles
     var circlesGroup = chartGroup.selectAll("circle")
         .data(movieData)
         .enter()
         .append("circle")
+        // class
+        // .attr("class", "movieCircles")
         .attr("cx", d => xLinearScale(d.budget))
         .attr("cy", d => yLinearScale(d.revenue))
         .attr("r", 10)
@@ -85,31 +100,58 @@ d3.json("/metadata/scatter_plot").then(function (movieData) {
         .attr("stroke-width", 1)
         .attr("fill", "teal")
         // .attr("fill", c10)
-        .attr('fill',function (d,i) { return c10(i) })
+        .attr('fill',function (d,i) { return c10(d.genres) })
+        // .attr('fill',function (d,i) { return c20(d.genres) })
         .attr("opacity", "0.6")
+
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+        });
+    
+    var toolTip = d3.tip()
+        .attr("class", "tooltip")
+        .offset([80, -100])
+        .html(function(d) {
+        return (`<strong>${d.title}</strong><br>Genre: ${d.genres}
+                <br>Budget: ${formatter.format(d.budget)}
+                <br>Revenue: ${formatter.format(d.budget)}`);
+        });
+
+    chartGroup.call(toolTip);
 
     circlesGroup.on("mouseover", function (d) {
             d3.select(this)
                 .transition()
                 // .duration(500)
                 .attr("r", 20)
-                .attr("stroke-width", 3)
+                .attr("stroke-width", 3);
+            
+            toolTip.show(d, this);
+
+            // toolTip.transition()
+            //     .style("opacity", .9)
+            //     .style("left", d3.event.pageX + "px")
+            //     .style("top", d3.event.pageY + "px");
         })
-            .on("mouseout", function () {
+            .on("mouseout", function (d) {
                 d3.select(this)
-                .transition()
-                // .duration(500)
-                .attr("r", 10)
-                .attr("stroke-width", 1)
+                    .transition()
+                    // .duration(500)
+                    .attr("r", 10)
+                    .attr("stroke-width", 1);
+                
+                toolTip.hide(d);
+
+                // toolTip.transition()
+                //     .duration(500)
+                //     .style("opacity", 0);
         })
-
-        .append("title") // Tooltip
-            .text(d => d.title);
-
-        // .append("div")
-        // .classed("tooltip", true)
-        // .style("display", "block")
-        // .html(`<strong>${d => d.title}<strong><hr>${d => d.budget}`);
+        // .append("title") // Tooltip
+        //     .text(d => d.title);
 });
 
 
