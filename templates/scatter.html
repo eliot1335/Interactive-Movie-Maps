@@ -13,6 +13,7 @@
             <!-- test -->
             <h4>Choose a genre:</h4>
             <select id="genreSelect" onchange="genreChanged(this.value)">
+                <option value="Select a genre">-- Select a genre --</option>
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Animation">Animation</option>
@@ -34,6 +35,8 @@
                 <option value="War">War</option>
                 <option value="Western">Western</option>
             </select>
+            <button onclick="resetInit()">All Genres</button>
+
             <!-- test end -->
         </div>
     </div>
