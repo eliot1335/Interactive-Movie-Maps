@@ -33,7 +33,7 @@ def mapping():
     db= client.movies_db
     movies= db.movie_table
 
-    fields = {"title": True, "productionCountries": True, "revenue": True, "_id": False}
+    fields = {"title": True, "revenue": True, "productionCountries": True, "_id": False}
 
     json_projects = movies.find({}, fields)
 
