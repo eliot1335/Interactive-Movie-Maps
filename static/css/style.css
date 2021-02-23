@@ -46,12 +46,10 @@ progress {
     border: 1px solid slategray;
     overflow: hidden;
 }
-
 /* necessary to style the progress bar background */
 ::-webkit-progress-bar {
     background-color: white;
 }
-
 /* ---------
     NOT animated
 */
@@ -65,7 +63,6 @@ progress {
     background-color: slategray;
     border:0;
 }
-
 /* tooltips */
 div.tooltip {	
     position: absolute;			
@@ -79,4 +76,3 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;			
 }
-
