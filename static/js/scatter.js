@@ -4,10 +4,10 @@ function resetInit() {
 
     // Setup the parameters
     var svgWidth = 1000;
-    var svgHeight = 700;
+    var svgHeight = 550;
 
     var margin = {
-        top: 40,
+        top: 20,
         right: 40,
         bottom: 80,
         left: 100
@@ -155,10 +155,10 @@ function buildChart(thatGenre) {
 
         // Setup the parameters
         var svgWidth = 1000;
-        var svgHeight = 700;
+        var svgHeight = 550;
 
         var margin = {
-            top: 40,
+            top: 20,
             right: 40,
             bottom: 80,
             left: 100
