@@ -158,7 +158,7 @@ function buildChart(thatGenre) {
         var svgHeight = 550;
 
         var margin = {
-            top: 20,
+            top: 10,
             right: 40,
             bottom: 80,
             left: 100
