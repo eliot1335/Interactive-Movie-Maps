@@ -1,74 +1,74 @@
 
 var myMap = L.map("map", {
-  center: [0.00,0.00],
+  center: [0.00, 0.00],
   zoom: 1,
 });
 
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/satellite-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: API_KEY
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/satellite-v9',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: API_KEY
 }).addTo(myMap);
 
 
-var productionCountries= [{
+var productionCountries = [{
   title: "Avatar",
   revenue: "$2,787,965,087.00",
-  location: [37.090240,-95.712891]
+  location: [37.090240, -95.712891]
 },
 {
   title: "Furious 7",
   revenue: "$1,506,249,360.00",
-  location: [36.204823,138.252930]
+  location: [36.204823, 138.252930]
 },
 {
   title: "Harry Potter and the Deathly Hallows: Part 2",
   revenue: "$1,342,000,000.00",
-  location: [55.378052,-3.435973]
+  location: [55.378052, -3.435973]
 },
 {
   title: "Iron Man 3",
   revenue: "$1,215,439,994.00",
-  location:[35.861660,104.195396]
+  location: [35.861660, 104.195396]
 },
 {
   title: "The Lord of the Rings: The Return of the King",
   revenue: "$1,118,888,979.00",
-  location: [-40.900558,174.885971]
+  location: [-40.900558, 174.885971]
 },
 {
   title: "Harry Potter and the Chamber of Secrets",
   revenue: "$876,688,482.00",
-  location: [51.165691,10.451526]
+  location: [51.165691, 10.451526]
 },
 {
   title: "2012",
   revenue: "$769,653,595.00",
-  location: [56.130367,-106.346771]
+  location: [56.130367, -106.346771]
 },
 {
   title: "The Matrix Reloaded",
   revenue: "$738,599,701.00",
-  location: [-25.274399,133.775131]
+  location: [-25.274399, 133.775131]
 },
 {
   title: "Mission: Impossible - Ghost Protocol",
   revenue: "$694,713,380.00",
-  location: [50.087811,14.420460]
+  location: [50.087811, 14.420460]
 },
 {
   title: "Casino Royale",
   revenue: "$599,045,960.00",
-  location: [41.871941,12.567380]
+  location: [41.871941, 12.567380]
 },
 {
   title: "Terminator 2: Judgment Day",
   revenue: "$520,000,000.00",
-  location: [46.227638,2.213749]
+  location: [46.227638, 2.213749]
 },
 {
   title: "Dunkirk",
@@ -78,62 +78,62 @@ var productionCountries= [{
 {
   title: "Slumdog Millionaire",
   revenue: "$377,910,544.00",
-  location: [20.593683,78.962883]
+  location: [20.593683, 78.962883]
 },
 {
   title: "The Angry Birds Movie",
   revenue: "$349,779,543.00",
-  location:[61.924110,25.748152]
+  location: [61.924110, 25.748152]
 },
 {
   title: "The Lego Batman Movie",
   revenue: "$311,950,384.00",
-  location: [56.263920,9.501785]
+  location: [56.263920, 9.501785]
 },
 {
   title: "Wrath of the Titans",
   revenue: "$301,000,000.00 ",
-  location: [40.463669,-3.749220]
+  location: [40.463669, -3.749220]
 },
 {
   title: "Miss Peregrine's Home for Peculiar Children",
   revenue: "$296,485,719.00",
-  location: [50.503887,4.469936]
+  location: [50.503887, 4.469936]
 },
 {
   title: "The Departed",
   revenue: "$289,847,354.00",
-  location: [22.282150,114.156880]
+  location: [22.282150, 114.156880]
 },
 {
   title: "The Girl with the Dragon Tattoo",
   revenue: "$232,617,430.00",
-  location: [60.472023,8.468946]
+  location: [60.472023, 8.468946]
 },
 {
   title: "Inferno",
   revenue: "$220,021,259.00",
-  location: [47.162495,19.503304]
+  location: [47.162495, 19.503304]
 },
 {
   title: "London Has Fallen",
   revenue: "$205,754,447.00",
-  location: [42.733883,25.485830]
+  location: [42.733883, 25.485830]
 },
 {
   title: "King Arthur",
   revenue: "$203,567,857.00",
-  location: [53.412910,-8.243890]
+  location: [53.412910, -8.243890]
 },
 {
   title: "Everest",
   revenue: "$203,427,584.00",
-  location: [64.963051,-19.020836]
+  location: [64.963051, -19.020836]
 },
 {
   title: "Need for Speed",
   revenue: "$203,277,636.00",
-  location: [12.879721,121.774017]
+  location: [12.879721, 121.774017]
 },
 {
   title: "The Specialist",
@@ -392,10 +392,10 @@ var productionCountries= [{
 }
 ];
 
-for (var i=0; i<productionCountries.length;i++){
-  var country= countries[i];
-  L.marker(country.location)
-  .bindPopup("<h1>"+ country.title+ "</h1><hr><h2> Movie Revenue"+ country.revenue+ "</h2>")
-  .addTo(myMap);
+for (var i = 0; i < productionCountries.length; i++) {
+  var productionCountry = productionCountries[i];
+  L.marker(productionCountry.location)
+    .bindPopup("<h1>" + productionCountry.title + "</h1><hr><h2> Movie Revenue" + productionCountry.revenue + "</h2>")
+    .addTo(myMap);
 }
 
