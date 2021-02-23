@@ -395,3 +395,18 @@ for (var i = 0; i < countries.length; i++) {
     .bindPopup("<h4>" + country.title + "</h4><hr><p> Movie Revenue " + country.revenue + "</p>")
     .addTo(myMap);
 };
+
+var dict= {};
+
+d3.json("/metadata/world_map").then(function (movieData){
+  movieData.forEach(element => {
+    if (element.productionCountry in dict){
+      var elementexist=dict[element.productionCountry];
+      if (element.revenue > elementexist.revenue) {
+        dict[element.productionCountry]=element;
+      }
+    } else {
+      dict[element.productionCountry]=element;
+    }
+  });
+})
