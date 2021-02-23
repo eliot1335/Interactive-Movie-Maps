@@ -12,3 +12,5 @@
     * The second Visualization is a scatter plot of profit versus budget with the dots color-coded based upon the movie genre.
         * <https://ibb.co/zxFhyMp> the IMG for my visualization proposal, credited to <https://towardsdatascience.com/>
     * The final Visualization will showcase a world map of movie production countries. It will showcase via pop-up the highest-grossing movie for each country. The pop-up will appear when a user clicks on the country.
+
+To demo this site, run all of the cells in the ETL.ipynb file. This will clean the data and load the MongoDB with the data. Then run the app.py file.
