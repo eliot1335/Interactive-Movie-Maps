@@ -1,3 +1,5 @@
 .ipynb_checkpoints
 .env
 config.py
+*.pyc
+settings.json
