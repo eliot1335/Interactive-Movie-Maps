@@ -103,7 +103,7 @@ function resetInit() {
         
         var toolTip = d3.tip()
             .attr("class", "tooltip")
-            .offset([80, -100])
+            .offset([80, -130])
             .html(function(d) {
             return (`<strong>${d.title}</strong><br><br>Genre: ${d.genres}
                     <br>Budget: ${formatter.format(d.budget)}
