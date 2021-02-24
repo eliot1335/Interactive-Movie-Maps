@@ -14,3 +14,7 @@
     * The final Visualization will showcase a world map of movie production countries. It will showcase via pop-up the highest-grossing movie for each country. The pop-up will appear when a user clicks on the country.
 
 To demo this site, run all of the cells in the ETL.ipynb file. This will clean the data and load the MongoDB with the data. Then run the app.py file.
+
+![Cloud_Chart](static/img/cloud.png)
+![World_Map](static/img/maps.png)
+![Scatter_Plot](static/img/scatter.png)
