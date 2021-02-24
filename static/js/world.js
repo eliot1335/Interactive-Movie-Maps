@@ -273,7 +273,7 @@ d3.json("/metadata/world_map").then(function (movieData){
   for (var i = 0; i < countries.length; i++) {
     var country= countries[i];
     L.marker(country.location)
-      .bindPopup("<h4>" + country.title + "</h4><hr><p> Movie Revenue " + country.revenue + "</p>")
+      .bindPopup("<h4>" + country.title + "</h4><hr><p> Movie Revenue " +"$"+country.revenue + "</p>")
       .addTo(myMap);
   };
 })
