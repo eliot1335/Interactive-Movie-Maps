@@ -1,4 +1,8 @@
-# Project Title: Movie Visualizations
+# Movie Visualizations
+
+One Paragraph of project description goes here
+
+## Getting Started
 
 1. Create a flask app using MongoDB.
     * Create an ETL file that parses the CSV and creates the MongoDB.
@@ -10,10 +14,27 @@
         * Note: This is called cloud.js, and it extends d3. We are using this library for this project.
         * Note: there may be thick manipulations on the data if the word count is too long.
     * The second Visualization is a scatter plot of profit versus budget with the dots color-coded based upon the movie genre.
-        * <https://ibb.co/zxFhyMp> the IMG for my visualization proposal, credited to <https://towardsdatascience.com/>
     * The final Visualization will showcase a world map of movie production countries. It will showcase via pop-up the highest-grossing movie for each country. The pop-up will appear when a user clicks on the country.
 
+## Deployment
+
 To demo this site, run all of the cells in the ETL.ipynb file. This will clean the data and load the MongoDB with the data. Then run the app.py file.
+
+## Built With
+
+* [D3 Wordcloud](https://bl.ocks.org/jyucsiro/767539a876836e920e38bc80d2031ba7) - The framework for the bubble diagram
+* [Kaggle](https://www.kaggle.com/rounakbanik/the-movies-dataset) - Data source for project
+
+## Authors
+
+* **Sean Galloway**
+* **Eliot Chern**
+* **Cora Micsunescu**
+
+## Acknowledgments
+
+* Our instructional team, Erik Conser and Andrew Morrison, for answering our questions during office hours.
+* <https://ibb.co/zxFhyMp> the IMG for my visualization proposal, credited to <https://towardsdatascience.com/>
 
 ![Cloud_Chart](static/img/cloud.png)
 ![World_Map](static/img/maps.png)
