@@ -1,6 +1,6 @@
 # Movie Visualizations
 
-This scope of this project 
+This scope of this project was to take data and to tell a story using visualizations about the data. We used MongoDB to store the data and a Flask-powered webpage along with Javascript, HTML, and CSS to visualize the data. We created three separate vizualizations that involved engaging user interactivity through clicking, typing, or scrolling to explore the data. The visualizations are a D3 Word Cloud, a leaflet js map, and a D3 scatterplot.
 
 ## Built With
 
